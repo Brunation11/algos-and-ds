@@ -27,7 +27,6 @@ A comparison sort that repeatedly swaps adjacent elements that are out of order.
 Values "bubble up" to the top of the data structure.
 */
 
-
 function bubbleSort (arr) {
   var wall = arr.length; // establish an endpoint for our loop
   // Initial loop starts at index 0;
@@ -48,12 +47,6 @@ function bubbleSort (arr) {
   }
   return arr;
 }
-
-var arr = [5,6,6,9,8,2,5,1,5,4];
-
-console.log('Bubble Sort');
-console.log(`Unsorted: ${arr}`);
-console.log(`Sorted: ${bubbleSort(arr)}`);
 
 ////////////////////
 // Selection Sort (in place)
@@ -114,12 +107,6 @@ function selectionSort (arr) {
   return arr;
 }
 
-var arr = [5,6,6,9,8,2,5,1,5,4];
-
-console.log('Selection Sort');
-console.log(`Unsorted: ${arr}`);
-console.log(`Sorted: ${selectionSort(arr)}`);
-
 ////////////////////
 // Insertion Sort (in place)
 ////////////////////
@@ -166,13 +153,6 @@ function insertionSort (arr) {
   // At each time the while loop ran we compared the current value to the value to its left 
   return arr;
 }
-
-var arr = [5,6,6,9,8,2,5,1,5,4];
-
-console.log('Insertion Sort');
-console.log(`Unsorted: ${arr}`);
-console.log(`Sorted: ${insertionSort(arr)}`);
-
 
 ////////////////////
 // Merge Sort
@@ -268,12 +248,6 @@ function merge (left, right) {
   return merged.concat(left).concat(right);
 }
 
-var arr = [5,6,6,9,8,2,5,1,5,4];
-
-console.log('Merge Sort');
-console.log(`Unsorted: ${arr}`);
-console.log(`Sorted: ${mergeSort(arr)}`);
-
 ////////////////////
 // Quick Sort
 ////////////////////
@@ -307,7 +281,6 @@ Pivot location: The pointer that keeps track of where the list is less than on t
 
 //   return quickSort(right).concat(pivot, quickSort(left));
 // }
-
 
 // Initialize quick sort with 3 arguments:
 // The array to be sorted
@@ -352,12 +325,6 @@ function swap (arr, i1, i2) {
   arr[i1] = arr[i2];
   arr[i2] = temp;
 }
-
-var arr = [5,6,6,9,8,2,5,1,5,4];
-
-console.log('Quick Sort');
-console.log(`Unsorted: ${arr}`);
-console.log(`Sorted: ${quickSort(arr)}`);
 
 ////////////////////
 // Debugging Quick Sort
@@ -526,4 +493,14 @@ function quickSort(arr, lo, hi) { ---> [5, 3, 1, 4, 2]
 }
 */
 
+var arr = [8, 5, 3, 9, 6, 5, 4, 5, 1]; 
+var sorted = [1, 3, 4, 5, 5, 5, 6, 8, 9];
 
+console.log(`Input: ${arr}`);
+console.log(`Sorted: ${sorted}`);
+
+console.log(`Bubble Sort: ${bubbleSort(arr)}`);
+console.log(`Selection Sort: ${selectionSort(arr)}`);
+console.log(`Insertion Sort: ${insertionSort(arr)}`);
+console.log(`Merge Sort: ${mergeSort(arr)}`);
+console.log(`Quick Sort: ${quickSort(arr)}`);
