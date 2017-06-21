@@ -245,7 +245,7 @@ function merge (left, right) {
   // Notice we're also concating the left and right;
   // The idea here is that the while loop broke because one of the two sub-arrays were empty;
   // However the other might not be, so we'll tack on their remainders if any here using concat.
-  return merged.concat(left).concat(right);
+  return merged.concat(left, right);
 }
 
 ////////////////////
@@ -492,6 +492,109 @@ function quickSort(arr, lo, hi) { ---> [5, 3, 1, 4, 2]
   if (hi - lo === arr.length - 1) return arr;
 }
 */
+
+function bubbleSort (arr) {
+  var edge = arr.length;
+
+  while (edge-- > 0) {
+    for (var i = 0; i < edge; i++) {
+      if (arr[i] > arr[i + 1]) {
+        var temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+      }
+    }
+  }
+  console.log('Practice bubble 4');
+  return arr;
+}
+
+function selectionSort (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    var minVal = arr[i];
+    var minIdx = i;
+
+    for (var j = i; j < arr.length; j++) {
+      if (arr[j] < minVal) {
+        minVal = arr[j];
+        minIdx = j;
+      }
+    }
+    var temp = arr[i];
+    arr[i] = arr[minIdx];
+    arr[minIdx] = temp;
+  }
+  console.log('Practice selection 4');
+  return arr;
+}
+
+function insertionSort (arr) {
+  for (var i = 1; i < arr.length; i++) {
+    var leftOfIndex = i - 1;
+
+    while (leftOfIndex > -1 && arr[leftOfIndex] > arr[i]) {
+      var temp = arr[leftOfIndex];
+      arr[leftOfIndex] = arr[i];
+      arr[i] = temp;
+      i = leftOfIndex;
+      leftOfIndex--;
+    }
+  }
+  console.log('Practice insertion 4');
+  return arr;
+}
+
+function mergeSort (arr) {
+  if (arr.length < 2) return arr;
+  var midpoint = Math.floor(arr.length / 2);
+  var left = arr.slice(0, midpoint);
+  var right = arr.slice(midpoint);
+  console.log('Practice mergesort 4')
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge (left, right) {
+  var merged = [];
+
+  while (left.length && right.length) {
+    left[0] < right[0] ? merged.push(left.shift()) : merged.push(right.shift());
+  }
+  console.log('Practice merge 4');
+  return merged.concat(left, right);
+}
+
+function quickSort (arr, lo=0, hi=arr.length - 1) {
+  if (lo < hi) {
+    var p = partition(arr, lo, hi);
+    quickSort(arr, lo, p - 1);
+    quickSort(arr, p + 1, hi);
+  }
+  console.log('Practice quick 4');
+  if (hi-lo === arr.length - 1) return arr;
+}
+
+function partion (arr, lo, hi) {
+  var pivot = arr[hi];
+  var pivotLoc = lo;
+
+  for (var i = lo; i < hi; i++) {
+    if (arr[i] > pivot) {
+      swap(arr, pivotLoc, i);
+      pivotLoc++;
+    }
+  }
+  swap(arr, pivotLoc, hi);
+  console.log('Practice partion 4');
+  return pivotLoc;
+}
+
+function swap(arr, i1, i2) {
+  if (i1 === i2) return;
+  var temp = arr[i1];
+  arr[i1] = arr[i2];
+  arr[i2] = temp;
+  console.log('Practice swap 4');
+}
 
 var arr = [8, 5, 3, 9, 6, 5, 4, 5, 1]; 
 var sorted = [1, 3, 4, 5, 5, 5, 6, 8, 9];
